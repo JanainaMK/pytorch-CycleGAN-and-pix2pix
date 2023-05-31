@@ -10,7 +10,9 @@ RUN rm Miniconda3-latest-Linux-x86_64.sh
 ENV PATH=/miniconda/bin:${PATH}
 RUN conda update -y conda
 
-RUN conda install -y pytorch torchvision -c pytorch
-RUN mkdir /workspace/ && cd /workspace/ && git clone https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git && cd pytorch-CycleGAN-and-pix2pix && pip install -r requirements.txt
+RUN mkdir /workspace/ && cd /workspace/ && git clone https://github.com/JanainaMK/pytorch-CycleGAN-and-pix2pix.git
+RUN cd /workspace/pytorch-CycleGAN-and-pix2pix && conda env create -f environment.yml
+RUN echo "source activate pytorch-CycleGAN-and-pix2pix" > ~/.bashrc
+ENV PATH /opt/conda/envs/pytorch-CycleGAN-and-pix2pix/bin:$PATH
 
 WORKDIR /workspace
