@@ -9,6 +9,7 @@
 - [Introduction](#introduction)
 - [Data](#data)
 - [CycleGAN](#cyclegan)
+- [Evaluation](#evaluation)
 - [Results](#results)
 - [Conclusions](#conclusions)
 - [References](#references)
@@ -20,7 +21,7 @@ Image translation maps an input image to an output image and has image applicati
 
 Our studied approach, Cycle-consistent Generative Adversarial Network (CycleGAN), can learn to translate images from source to target without paired examples and serves as a general-purpose solution to image translation tasks [[2](#CycleGAN)]. CycleGAN learns to convert unpaired images from one domain to another (and vice versa) by enforcing cycle consistency that ensures that generated images maintain content consistency with the original images. 
 
-As our first task, to validate that the model works as intended, we attempt to reproduce and confirm the results from CycleGAN presented in [[2](#CycleGAN)]. To achieve the first task, the model will be retrained with the paired labels <-> photos Cityscapes dataset[^1] from [[3](#Cityscapes_Dataset)]. This dataset consists of urban street "photos" as one domain and a simplified annotated version of the scenes segmented by classes or "labels" (e.g road, building, person) as the other. While the model can handle unpaired images, quantitative evaluations are carried out using this paired labels <-> photos dataset to measure its accuracy in generating a realistic scene or assigning the correct labels to the segmented sections of the cityscapes. For evaluation, the Fully Convolutional Network (FCN) score from  [[3](#FCN_score)] will be calculated and compared to results in the paper [[2](#CycleGAN)]. The score measures the pixel-level agreement between the predicted image from CycleGAN and the ground truth image pair. 
+As our first task, to validate that the model works as intended, we attempt to reproduce and confirm the results from CycleGAN presented in [[2](#CycleGAN)]. To achieve the first task, the model will be retrained with the paired labels <-> photos Cityscapes dataset[^1] from [[3](#Cityscapes_Dataset)].  While the model can handle unpaired images, quantitative evaluations are carried out using this paired labels <-> photos dataset to measure its accuracy in generating a realistic scene or assigning the correct labels to the segmented sections of the cityscapes. 
 
 As our second task, to ensure that training the model works with new unpaired datasets from different domains, we compile two datasets to use for an object transfiguration task. The two chosen datasets consist of images of pandas[^2] and brown bears[^3] respectively. The idea behind this transfiguration task is that images of pandas should be relatively easy to transfigure to brown bears (and vice versa) as they are animals from the same family. Since none of the images come with a domain complementary pair, quantitative measures of the output's quality in terms of accuracy cannot be calculated using previous methods (FCN score) based on ground truth image pairs. 
 
@@ -31,8 +32,15 @@ Results from performing the two tasks will help validating whether CycleGAN serv
 [^3]: https://images.cv/dataset/brown-bear-image-classification-dataset
 
 ## Data
+For the first task, Cityscapes dataset[^1] was used and it consists of urban street "photos" as one domain and a simplified annotated version of the scenes segmented by classes or "labels" (e.g road, building, person) as the other. 
 
 ## CycleGAN
+Explain how the entire thing work briefly.
+
+## Evaluation
+For evaluation of the reproduction of the result of cityscapes, the Fully Convolutional Network (FCN) score from  [[3](#FCN_score)] will be calculated and compared to results in the paper [[2](#CycleGAN)]. The score measures the pixel-level agreement between the predicted image from CycleGAN and the ground truth image pair. 
+
+For the evaluation for the second task, we intended to carry out a perceptual study if time allows, where users are asked to find the real ungenerated image from sequences of image pairs. This method gives an indication of the model’s ability to generate believable images for a domain when given new datasets. However, it was not possible due to the time constraint as it took us longer than expected to make the model run with our available computational resources and environment.
 
 ## Results
 
@@ -50,5 +58,5 @@ Results from performing the two tasks will help validating whether CycleGAN serv
 ## Who did what
 | Who | What|
 | --- | --- |
-| Janaína Moreira-Kanaley | Make the model working, training the model on cityscapes, modifitcation of the evaluation script, output evaluation, traing the model with new datasets, work on blogpost, work on the story line |
+| Janaína Moreira-Kanaley | Make the model working, training the model on cityscapes, modifitcation of the evaluation script, run evaluation, traing the model with new datasets, work on blogpost, work on the story line |
 | Taichi Uno    | Make the model working, modifitcation of the evaluation script, work on blogpost, work on the story line |
