@@ -11,9 +11,12 @@
 - [CycleGAN](#cyclegan)
 - [Evaluation](#evaluation)
 - [Results](#results)
+  - [Task 1](#task-1)
+  - [Task 2](#task-2)
 - [Conclusions](#conclusions)
 - [References](#references)
-- [Who did what](#who-did-what)
+- [Appendix](#appendix)
+  - [Work Distribution](#work-distribution)
 <!-- TOC -->
 
 ## Introduction
@@ -41,12 +44,21 @@ CycleGAN implements a model that aims to learn mapping functions between two dis
 
 The network architecture comprises three convolutions with a stride of 1/2, nine residual blocks (for 256x256 images), two fractionally-strided convolutions with a stride of 1/2, and one convolutional layer that maps features to the RGB format. For the discriminator networks, the model employs 70 × 70 PatchGANs, which classify whether 70 × 70 overlapping image patches are real or fake. This enables the model to handle images of varying sizes through a fully convolutional approach.
 
+To reproduce the results and train the model on different datasets, it was challenging to set up the model to run on our environment. We first started with forking the original repository[^4]. While one of our groupmate had access to a laptop with a GPU, configuration took time. Meanwhile, the other one was working on utilising online computational resources (Google Colab and Kaggle). Despite these efforts, the setup process to make the model working required additional time and effort.
+
+[^4]: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
+
 ## Evaluation
-For evaluation of the reproduction of the result of cityscapes, the Fully Convolutional Network (FCN) score from  [[3](#FCN_score)] will be calculated and compared to results in the paper [[2](#CycleGAN)]. The score measures the pixel-level agreement between the predicted image from CycleGAN and the ground truth image pair. 
+For evaluation of the reproduction of the result of cityscapes, the Fully Convolutional Network (FCN) score from  [[4](#FCN_score)] will be calculated and compared to results in the paper [[2](#CycleGAN)]. The score measures the pixel-level agreement between the predicted image from CycleGAN and the ground truth image pair. 
+
+Although its evaluation script for cityscapes labels2photos task was available in the original repository, it was necessary to adjust the dataset format. This was because there was a mismatch in naming convention and structure between what the orignal Cityspaces dataset look like and the output of the model. 
 
 For the evaluation of the second task, we intended to carry out a perceptual study if time allows, where users are asked to find the real not-generated image from a list of image pairs. This method gives an indication of the model’s ability to generate believable images for a domain given new datasets. However, it was not possible due to the time constraint as it took us longer than expected to make the model run with our available computational resources and environment.
 
 ## Results
+### Task 1
+
+### Task 2
 
 ## Conclusions
 
@@ -59,7 +71,9 @@ For the evaluation of the second task, we intended to carry out a perceptual stu
 
 <a id="FCN_score">[4]</a> P. Isola, J. Zhu, T. Zhou, and A. A. Efros, “Image-to-image translation with conditional adversarial networks,” CoRR, vol. abs/1611.07004, 2016. arXiv: 1611 . 07004. [Online]. Available: http://arxiv.org/abs/1611.07004.
 
-## Who did what
+
+## Appendix
+### Work Distribution
 | Who | What|
 | --- | --- |
 | Janaína Moreira-Kanaley | Make the model working, training the model on cityscapes, modifitcation of the evaluation script, run evaluation, traing the model with new datasets, work on blogpost, work on the story line |
