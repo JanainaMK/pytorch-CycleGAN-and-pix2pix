@@ -35,7 +35,7 @@ By performing these two tasks, we aim to validate whether CycleGAN can serve as 
 [^3]: https://images.cv/dataset/brown-bear-image-classification-dataset
 
 ## Data
-For the first task, Cityscapes dataset[^1] was used and it consists of urban street "photos" as one domain and a simplified annotated version of the scenes segmented by classes or "labels" (e.g road, building, person) as the other. 
+For the first task, the Cityscapes dataset[^1] was used and it consists of urban street "photos" as one domain and a simplified annotated version of the scenes segmented by classes or "labels" (e.g. road, building, person) as the other. It uses 2974 images with image size 128x128, while the evaluation is carried out using the Cityscapes val set. 
 
 ## CycleGAN
 This section explains how CycleGAN works in terms of its formulation and implementation. The following information was described in the CycleGAN paper[[2](#CycleGAN)].
